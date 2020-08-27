@@ -22,26 +22,21 @@ import io.jsonwebtoken.UnsupportedJwtException;
  */
 @Component
 public class JwtUtils {
-	
+
 	private static final Logger LOG = Logger.getLogger(JwtUtils.class);
 	@Value("${hiProperties.app.jwtSecret}")
 	private String jwtSecret;
 
 	@Value("${hiProperties.app.jwtExpirationMs}")
 	private int jwtExpirationMs;
-	
-	
 
 	public String generateJwtToken(Authentication authentication) {
 
 		UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
-		return Jwts.builder()
-				.setSubject((userPrincipal.getUsername()))
-				.setIssuedAt(new Date())
+		return Jwts.builder().setSubject((userPrincipal.getUsername())).setIssuedAt(new Date())
 				.setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
-				.signWith(SignatureAlgorithm.HS512, jwtSecret)
-				.compact();
+				.signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 	}
 
 	public String getUserNameFromJwtToken(String token) {
@@ -55,9 +50,9 @@ public class JwtUtils {
 		} catch (SignatureException e) {
 			LOG.error("Invalid JWT signature: {}" + e.getMessage());
 		} catch (MalformedJwtException e) {
-			LOG.error("Invalid JWT token: {}"+  e.getMessage());
+			LOG.error("Invalid JWT token: {}" + e.getMessage());
 		} catch (ExpiredJwtException e) {
-			LOG.error("JWT token is expired: {}"+e.getMessage());
+			LOG.error("JWT token is expired: {}" + e.getMessage());
 		} catch (UnsupportedJwtException e) {
 			LOG.error("JWT token is unsupported: {}" + e.getMessage());
 		} catch (IllegalArgumentException e) {

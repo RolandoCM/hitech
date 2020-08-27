@@ -25,7 +25,8 @@ import com.app.hitech.repository.RoleRepository;
 import com.app.hitech.service.IEmployeeService;
 import com.app.hitech.utils.ConverterEmployee;
 
-/**\
+/**
+ * \
  * 
  * @author Rolando C
  *
@@ -36,22 +37,18 @@ public class EmployeeService implements IEmployeeService {
 	private EmployeeRepository employeeRepository;
 	@Autowired
 	PasswordEncoder encoder;
-	
+
 	@Autowired
 	RoleRepository roleRepository;
 
 	@Override
 	public List<SortDetailsEmployee> getEmployees() {
 		List<SortDetailsEmployee> sortDetailsList = new ArrayList<>();
-		employeeRepository.findAllEmployees().forEach( e  -> {
-			SortDetailsEmployee sortDetails = new SortDetailsEmployee()
-					.withName(e.getName())
-					.withCode(e.getCode())
-					.roles(e.getRoles())
-					.enabled(e.isEnabled())
-					.build();
+		employeeRepository.findAllEmployees().forEach(e -> {
+			SortDetailsEmployee sortDetails = new SortDetailsEmployee().withName(e.getName()).withCode(e.getCode())
+					.roles(e.getRoles()).enabled(e.isEnabled()).build();
 			sortDetailsList.add(sortDetails);
-			});
+		});
 		return sortDetailsList;
 	}
 
@@ -59,7 +56,7 @@ public class EmployeeService implements IEmployeeService {
 	@Transactional
 	public DetailsEmployee getEmployee(String username) throws BusinessException {
 		try {
-			
+
 			Employee e = employeeRepository.findByUsername(username)
 					.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 			return ConverterEmployee.convertEmployeeToDetailsEmployee(e);
@@ -94,7 +91,7 @@ public class EmployeeService implements IEmployeeService {
 	}
 
 	@Override
-	public void updateEmployee(DetailsEmployee de ) throws BusinessException {
+	public void updateEmployee(DetailsEmployee de) throws BusinessException {
 		try {
 			Employee employee = employeeRepository.findByCode(de.getCode())
 					.orElseThrow(() -> new RuntimeException("Error: employee is not found."));

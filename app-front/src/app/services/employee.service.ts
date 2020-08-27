@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Employee } from '../models/employee';
 
 
-const API_URL= 'http://localhost:8080/api/hitech/';
+const API_URL= 'https://hthtest.herokuapp.com/api/hitech/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 }

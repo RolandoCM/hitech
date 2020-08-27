@@ -1,13 +1,13 @@
 package com.app.hitech.exceptions;
 
 /**
- * <h1> Bussiness Exception </h1>
- * Definition of Bussiness exception extends of {@link AppException}
+ * <h1>Bussiness Exception</h1> Definition of Bussiness exception extends of
+ * {@link AppException}
  * 
  * @author Rolando Castillo
  *
  */
-public class BusinessException extends AppException{
+public class BusinessException extends AppException {
 
 	/**
 	 * 

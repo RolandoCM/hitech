@@ -10,11 +10,17 @@ import org.springframework.stereotype.Service;
 
 import com.app.hitech.entities.Employee;
 import com.app.hitech.repository.EmployeeRepository;
+
+/**
+ * @author casti
+ *
+ */
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
+public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
+
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

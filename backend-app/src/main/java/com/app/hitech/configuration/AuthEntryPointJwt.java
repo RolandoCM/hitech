@@ -10,12 +10,15 @@ import org.apache.log4j.Logger;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
+
 /**
- * @author casti
+ * Component interceptor of http request to valid the jwt token
+ * 
+ * @author Rolando Castillo
  *
  */
 @Component
-public class AuthEntryPointJwt implements AuthenticationEntryPoint  {
+public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 	private static final Logger logger = Logger.getLogger(AuthEntryPointJwt.class);
 
 	@Override

@@ -31,8 +31,9 @@ public interface IEmployeeService {
 	DetailsEmployee getEmployee(String username) throws BusinessException;
 
 	/**
-	 * Update of the employee, this method receive {@link Employee0} as parameter and
-	 * return the update {@link Employee0}. If exist any exception, this is throw.
+	 * Update of the employee, this method receive {@link Employee0} as parameter
+	 * and return the update {@link Employee0}. If exist any exception, this is
+	 * throw.
 	 * 
 	 * @param employee {@link DetailsEmployee}
 	 * @return {@link DetailsEmployee}
@@ -48,25 +49,22 @@ public interface IEmployeeService {
 	 * @throws BusinessException
 	 */
 	void newEmployee(SignUpRequest request) throws BusinessException;
-	
+
 	/**
 	 * @param username
 	 * @return
 	 */
 	Boolean existsByUsername(String username);
-	
+
 	/**
 	 * @param email
 	 * @return
 	 */
-	Boolean existsByEmail( String email);
-	
+	Boolean existsByEmail(String email);
+
 	/**
 	 * @param code
 	 */
 	void delete(String code);
-	
-	
-	
 
 }

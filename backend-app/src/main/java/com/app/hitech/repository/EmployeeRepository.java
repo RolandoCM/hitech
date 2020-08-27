@@ -20,7 +20,7 @@ import com.app.hitech.entities.Employee;
  */
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-	
+
 	@Query("select u from Employee u where u.enabled = TRUE")
 	List<Employee> findAllEmployees();
 
@@ -31,14 +31,15 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	 * @return {@link Employee0}
 	 */
 	Optional<Employee> findByCode(String code);
-	
+
 	/**
 	 * @param username
 	 * @return
 	 */
 	Optional<Employee> findByUsername(String username);
-	
+
 	Boolean existsByUsername(String username);
+
 	/**
 	 * @param email
 	 * @return

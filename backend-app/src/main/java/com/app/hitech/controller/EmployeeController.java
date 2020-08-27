@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,6 +24,7 @@ import com.app.hitech.service.IEmployeeService;
 
 /**
  * Controller Employee, contains the CRUD to employee
+ * 
  * @author Rolando Castillo
  *
  */
@@ -87,7 +87,7 @@ public class EmployeeController {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			employeeService.updateEmployee(employee);
-		}catch (BusinessException e) {
+		} catch (BusinessException e) {
 			LOG.error(e);
 			response.put("errors", e.getMessage());
 			response.put("data", employee);
@@ -95,9 +95,14 @@ public class EmployeeController {
 		}
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
+
+	/**
+	 * @param code
+	 * @return
+	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("disable")
-	public ResponseEntity<?> delete(@RequestBody String code){
+	public ResponseEntity<?> delete(@RequestBody String code) {
 		Map<String, Object> response = new HashMap<>();
 		employeeService.delete(code);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);

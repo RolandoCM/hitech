@@ -19,10 +19,10 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.app.hitech.service.impl.UserDetailsServiceImpl;
 
 /**
- * @author casti
+ * @author Rolando Castillo
  *
  */
-public class AuthTokenFilter extends OncePerRequestFilter{
+public class AuthTokenFilter extends OncePerRequestFilter {
 
 	@Autowired
 	private JwtUtils jwtUtils;
@@ -54,6 +54,10 @@ public class AuthTokenFilter extends OncePerRequestFilter{
 		filterChain.doFilter(request, response);
 	}
 
+	/**
+	 * @param request
+	 * @return
+	 */
 	private String parseJwt(HttpServletRequest request) {
 		String headerAuth = request.getHeader("Authorization");
 
@@ -63,5 +67,5 @@ public class AuthTokenFilter extends OncePerRequestFilter{
 
 		return null;
 	}
-	
+
 }

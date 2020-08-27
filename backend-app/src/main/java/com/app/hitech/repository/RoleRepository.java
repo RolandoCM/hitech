@@ -8,7 +8,11 @@ import org.springframework.stereotype.Repository;
 import com.app.hitech.entities.EnumRole;
 import com.app.hitech.entities.Role;
 
+/**
+ * @author casti
+ *
+ */
 @Repository
-public interface RoleRepository extends  JpaRepository<Role, Integer>{
+public interface RoleRepository extends JpaRepository<Role, Integer> {
 	Optional<Role> findByName(EnumRole name);
 }

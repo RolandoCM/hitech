@@ -20,22 +20,19 @@ import javax.persistence.UniqueConstraint;
  *
  */
 @Entity
-@Table(	name = "employees", 
-uniqueConstraints = { 
-	@UniqueConstraint(columnNames = "username"),
-	@UniqueConstraint(columnNames = "email") 
-})
+@Table(name = "employees", uniqueConstraints = { @UniqueConstraint(columnNames = "username"),
+		@UniqueConstraint(columnNames = "email") })
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(length = 30, nullable = false, unique = true)
 	private String username;
-	@Column(length = 100, nullable = false, unique = true )
+	@Column(length = 100, nullable = false, unique = true)
 	private String email;
 	@Column(length = 120, nullable = false)
 	private String password;
-	
+
 	@Column(length = 100, nullable = false)
 	private String name;
 	@Column(length = 200, nullable = false, unique = true)
@@ -48,89 +45,107 @@ public class Employee {
 	private String profession;
 	@Column
 	private boolean enabled;
-	
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(	name = "em_roles", 
-				joinColumns = @JoinColumn(name = "em_id"), 
-				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "em_roles", joinColumns = @JoinColumn(name = "em_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
-	
+
 	public Employee() {
 	}
+
 	public Employee(String username, String email, String password) {
 		super();
 		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public Set<Role> getRoles() {
 		return roles;
 	}
+
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public String getBranch() {
 		return branch;
 	}
+
 	public void setBranch(String branch) {
 		this.branch = branch;
 	}
+
 	public String getProfession() {
 		return profession;
 	}
+
 	public void setProfession(String profession) {
 		this.profession = profession;
 	}
+
 	public boolean isEnabled() {
 		return enabled;
 	}
+
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	
-	
+
 }

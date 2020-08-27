@@ -1,14 +1,14 @@
 package com.app.hitech.exceptions;
 
 /**
- * <h1>Integration Exception </h1>
- * Definition exception of integration extends from {@link AppException}
+ * <h1>Integration Exception</h1> Definition exception of integration extends
+ * from {@link AppException}
  * 
  * 
- * @author Rolando Castillo 
+ * @author Rolando Castillo
  *
  */
-public class IntegrationException extends AppException{
+public class IntegrationException extends AppException {
 
 	/**
 	 * 
@@ -18,5 +18,5 @@ public class IntegrationException extends AppException{
 	public IntegrationException(String message, Throwable trace) {
 		super(message, trace);
 	}
-	
+
 }

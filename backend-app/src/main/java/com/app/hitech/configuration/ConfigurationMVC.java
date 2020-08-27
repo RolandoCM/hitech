@@ -9,7 +9,11 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
+
 /**
+ * Configuration mvc to redirect and valid which resource is and permit all
+ * petitions with methods POST PUT and GET for
+ * 
  * @author casti
  *
  */
@@ -17,20 +21,19 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 public class ConfigurationMVC implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/**")
-			.addResourceLocations("classpath:/static/")
-			.resourceChain(true)
-			.addResolver(new PathResourceResolver() {
-				@Override
-				protected Resource getResource(String resourcePath, Resource location) throws IOException {
-					Resource requestResource = location.createRelative(resourcePath);
-					return requestResource.exists() && requestResource.isReadable() ? requestResource 
-							: new ClassPathResource("/static/index.html");
-				}
-			});
+		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/").resourceChain(true)
+				.addResolver(new PathResourceResolver() {
+					@Override
+					protected Resource getResource(String resourcePath, Resource location) throws IOException {
+						Resource requestResource = location.createRelative(resourcePath);
+						return requestResource.exists() && requestResource.isReadable() ? requestResource
+								: new ClassPathResource("/static/index.html");
+					}
+				});
 	}
+
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowedMethods("POST","PUT","GET");
+		registry.addMapping("/**").allowedMethods("POST", "PUT", "GET");
 	}
 }

@@ -10,7 +10,7 @@ import com.app.hitech.entities.Role;
  *
  */
 public class SortDetailsEmployee implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -19,29 +19,33 @@ public class SortDetailsEmployee implements Serializable {
 	private String name;
 	private boolean enabled;
 	private Set<Role> roles;
-	
-	public SortDetailsEmployee() {}
-	
+
+	public SortDetailsEmployee() {
+	}
+
 	public SortDetailsEmployee withCode(String code) {
 		this.code = code;
 		return this;
 	}
+
 	public SortDetailsEmployee withName(String name) {
-		this.name= name;
+		this.name = name;
 		return this;
 	}
+
 	public SortDetailsEmployee roles(Set<Role> roles) {
-		this.roles=roles;
+		this.roles = roles;
 		return this;
 	}
+
 	public SortDetailsEmployee enabled(boolean enabled) {
-		this.enabled=enabled;
+		this.enabled = enabled;
 		return this;
 	}
-	
+
 	public SortDetailsEmployee build() {
 		SortDetailsEmployee details = new SortDetailsEmployee();
-		details.code =this.code;
+		details.code = this.code;
 		details.name = this.name;
 		details.roles = this.roles;
 		details.enabled = this.enabled;
@@ -52,11 +56,9 @@ public class SortDetailsEmployee implements Serializable {
 		return code;
 	}
 
-
 	public String getName() {
 		return name;
 	}
-
 
 	public Set<Role> getRoles() {
 		return roles;
@@ -65,7 +67,5 @@ public class SortDetailsEmployee implements Serializable {
 	public boolean isEnabled() {
 		return enabled;
 	}
-	
-	
 
 }

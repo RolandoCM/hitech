@@ -12,27 +12,31 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.app.hitech.entities.Employee;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * @author casti
+ *
+ */
 public class UserDetailsImpl implements UserDetails {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8061001566450839239L;
 
 	private Long id;
-	
+
 	private String username;
-	
+
 	private String email;
-	
-	private boolean enabled =true;
-	
+
+	private boolean enabled = true;
+
 	@JsonIgnore
 	private String password;
-	
-	private Collection<? extends GrantedAuthority > authorities;
-	
-	public UserDetailsImpl(Long id, String username, String email, String password,  boolean enabled,
+
+	private Collection<? extends GrantedAuthority> authorities;
+
+	public UserDetailsImpl(Long id, String username, String email, String password, boolean enabled,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;
@@ -41,19 +45,13 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities = authorities;
 		this.enabled = enabled;
 	}
-	
+
 	public static UserDetailsImpl build(Employee user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
-				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-				.collect(Collectors.toList());
+				.map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
-		return new UserDetailsImpl(
-				user.getId(), 
-				user.getUsername(), 
-				user.getEmail(),
-				user.getPassword(), 
-				user.isEnabled(),
-				authorities);
+		return new UserDetailsImpl(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(),
+				user.isEnabled(), authorities);
 	}
 
 	@Override
@@ -70,9 +68,11 @@ public class UserDetailsImpl implements UserDetails {
 	public String getUsername() {
 		return username;
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -98,6 +98,7 @@ public class UserDetailsImpl implements UserDetails {
 	public boolean isEnabled() {
 		return enabled;
 	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
