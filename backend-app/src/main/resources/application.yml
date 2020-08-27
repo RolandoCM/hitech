@@ -7,10 +7,10 @@ spring:
       ddl-auto: update
   datasource:
     platform: postgres
-    url: jdbc:postgresql://ec2-54-247-78-30.eu-west-1.compute.amazonaws.com:5432/dcvlbo2uiukuiu
+    url: ${DATABASE_URI}
     
-    password: 5fd185e0a0b2b9511e6711f9ff40dafcc29dff9b083c1a1c1e0e31cc51264b8f
-    username: qbixbpclrqvfhv
+    password: ${DATABASE_PASSWORD}
+    username: ${DATABASE_USER}
     driverClassName: org.postgresql.Driver
     dbcp2:
       max-total: 20
@@ -18,5 +18,5 @@ spring:
 # App:
 hiProperties:
   app:
-    jwtSecret: SecretKey
+    jwtSecret: ${JWT_KEY}
     jwtExpirationMs: 86400000
