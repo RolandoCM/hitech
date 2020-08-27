@@ -1,29 +1,26 @@
 # hitech
 
-# AppFront
+Content
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
+technologies:
+java 8 (Spring Framework)
+Angular 10
+Postgres
+Heroku
 
-## Development server
+module:
+backend-app:
+Java 8 used the framework spring Framework and some of his subprojects like Spring security, Spring data, etc.
+This project uses JPA to mapping the tables. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+frontend-app:
+Angular 10 enbebed in a java project.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run:
+the application is ready to run in a  Heroku platform 
+You should create a free account if you don't have it
+Add resource Postgres database
+Add the variables with the names in the file application.yml of the database in settings.
+create your repository git. The repository should be added to Heroku.
+When you do the commit, the application automatically will be deployed.
+You will find the basic data to database access to the app in the file data.sql
