@@ -1,0 +1,20 @@
+<ul class="nav nav-pills">
+  <li *ngIf="showEmployee" class="nav-item">
+    <a class="nav-link active" routerLink="/home">Home</a>
+  </li>
+  <li  *ngIf="showEmployee" class="nav-item">
+    <a class="nav-link" routerLink="/details">Profile</a>
+  </li>
+  <li *ngIf="showAdmin" class="nav-item">
+    <a class="nav-link" href="#">Admin</a>
+  </li>
+  <li  *ngIf="!isLoggedIn" class="nav-item">
+    <a class="nav-link" routerLink="/register" >Sign Up</a>
+  </li>
+  <li *ngIf="!isLoggedIn" class="nav-item">
+    <a class="nav-link" routerLink="/login" >Login</a>
+  </li>
+  <li *ngIf="isLoggedIn" class="nav-item">
+    <a class="nav-link" (click)="logout()" >Log Out</a>
+  </li>
+</ul>

@@ -1,0 +1,66 @@
+<app-header></app-header>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="username">Username</label>
+            <input type="text" formControlName="username" class="form-control"  />
+        </div>
+        <div class="form-group col">
+            <label for="code">Code</label>
+            <input type="text" formControlName="code" class="form-control"  />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="from-group col">
+            <label for="name">Email</label>
+            <input type="email" formControlName="email" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+        </div>
+
+        <div class="form-group col">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="city">City</label>
+            <input type="text" formControlName="city" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+            <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                <div *ngIf="f.city.errors.required">City is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="branch">Branch</label>
+            <input type="text" formControlName="branch" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.branch.errors }" />
+            <div *ngIf="submitted && f.branch.errors" class="invalid-feedback">
+                <div *ngIf="f.branch.errors.required">Branch is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="profession">Profession</label>
+            <input type="text" formControlName="profession" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.profession.errors }" />
+            <div *ngIf="submitted && f.profession.errors" class="invalid-feedback">
+                <div *ngIf="f.profession.errors.required">Profession is required</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/home" class="btn btn-link">Cancel</a>
+    </div>
+</form>

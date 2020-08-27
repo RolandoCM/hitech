@@ -1,0 +1,27 @@
+<app-header></app-header>
+<br><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of employees">
+            <td>{{e.code}}</td>
+            <td>{{e.name}}</td>
+            <td>{{e.roles}}</td>
+            <td style="white-space: nowrap">
+                
+                <button  (click)="delete(e.code)"
+                 class="btn btn-sm btn-danger btn-delete-user" [disabled]="!e.enabled">
+                 <span *ngIf="!e.enabled" class="spinner-border spinner-border-sm"></span>
+                 <span *ngIf="e.enabled">Delete</span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
