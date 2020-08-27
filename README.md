@@ -1,14 +1,14 @@
 # hitech
 
-#Content
+# Content
 
-#Technologies:
+# Technologies:
 java 8 (Spring Framework)
 Angular 10
 Postgres
 Heroku
 
-#Module:
+# Module:
 backend-app:
 Java 8 used the framework spring Framework and some of his subprojects like Spring security, Spring data, etc.
 This project uses JPA to mapping the tables. 
@@ -16,7 +16,7 @@ This project uses JPA to mapping the tables.
 frontend-app:
 Angular 10 enbebed in a java project.
 
-#Run:
+# Run:
 The application is ready to run in a  Heroku platform 
 You should create a free account if you don't have it
 Add resource Postgres database
